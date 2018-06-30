@@ -98,6 +98,7 @@
                             id="priority"
                             class="form-control"
                             v-model="selectedPriority">
+                            <option disabled value="">Please select an option</option>
                         <option v-for="priority in priorities">{{ priority }}</option>
                     </select>
                 </div>
