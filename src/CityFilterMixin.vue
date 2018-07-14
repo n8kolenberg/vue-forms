@@ -14,7 +14,7 @@
 <script>
 import {FilterCity} from "./FilterCity"
 export default {
-    mixins: [FilterCity],
+    mixins: [FilterCity], //Mixin is not shared across components - if you want to use shared data, create an object in a js file that you then use in data object inside of component
     data() {
         return {
            
