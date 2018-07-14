@@ -99,7 +99,7 @@
                             class="form-control"
                             v-model="selectedPriority">
                             <option disabled value="">Please select an option</option>
-                        <option v-for="priority in priorities">{{ priority }}</option>
+                            <option v-for="priority in priorities">{{ priority }}</option>
                     </select>
                 </div>
             </div>
@@ -144,11 +144,34 @@
                 </div>
             </div>
         </div>
+        <hr>
+
+        <h2>Local City List</h2>    
+        <div class="row">
+              <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
+                <label for="cities">Filter The Cities</label>
+                <input
+                        id="cities"
+                        class="form-control"
+                        v-model="filteredCity">
+                <ul>
+                    <li v-for="city in filterCities"> {{city}} </li>
+                </ul>        
+            </div>  
+        </div>
+
+        <hr>
+        <h2>Component City List</h2>
+        <div class="row">
+            <city-filter></city-filter>
+        </div>
+
     </div>
 </template>
 
 <script>
 import Switch from "./Switch.vue";
+import CityFilter from "./CityFilter.vue"
     export default {
         data() {
             return {
@@ -163,7 +186,10 @@ import Switch from "./Switch.vue";
                 priorities: ["Low", "Medium", "High"],
                 selectedPriority: "Low",
                 dataSwitch: true,
-                isSubmitted: false
+                isSubmitted: false,
+                cityList: ["Moscow", "New York", "London", "Barcelona", "Stockholm", "Dubai", "Singapore", "Florence", "Rome", "Venice", "Berlin", "Amsterdam", "Copenhagen", "Paris", "Madrid", "Lisbon", "Munich", "Rotterdam", "Sevilla", "Manchester", "Dublin", "Helsinki"],
+                filteredCity: ""
+                
             }
         },
             methods: {
@@ -171,8 +197,16 @@ import Switch from "./Switch.vue";
                     this.isSubmitted = true;
                 }
             },
+            computed: {
+                filterCities() {
+                    return this.cityList.filter((city) => {
+                        return city.toLowerCase().match(this.filteredCity.toLowerCase());
+                    });
+                }
+            },
             components: {
-                "app-switch": Switch
+                "app-switch": Switch,
+                "city-filter": CityFilter
             }
     }
 </script>
