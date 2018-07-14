@@ -166,12 +166,20 @@
             <city-filter></city-filter>
         </div>
 
+    <hr>
+        <h2>City List Filter Through Mixin</h2>
+        <div class="row">
+            <city-filter-mixin></city-filter-mixin>
+        </div>
+
     </div>
 </template>
 
 <script>
 import Switch from "./Switch.vue";
-import CityFilter from "./CityFilter.vue"
+import CityFilter from "./CityFilter.vue";
+import CityFilterMixin from "./CityFilterMixin.vue";
+
     export default {
         data() {
             return {
@@ -206,7 +214,8 @@ import CityFilter from "./CityFilter.vue"
             },
             components: {
                 "app-switch": Switch,
-                "city-filter": CityFilter
+                "city-filter": CityFilter,
+                "city-filter-mixin": CityFilterMixin
             }
     }
 </script>
